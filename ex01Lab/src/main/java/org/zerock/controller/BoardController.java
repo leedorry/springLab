@@ -115,7 +115,7 @@ public class BoardController {
     pageMaker.setCri(cri);
     // pageMaker.setTotalCount(131);
 
-    pageMaker.setTotalCount(service.listCountCriteria(cri));
+    pageMaker.setTotalCount(service.listCountCriteria(cri));	//1280
 
     model.addAttribute("pageMaker", pageMaker);
   }

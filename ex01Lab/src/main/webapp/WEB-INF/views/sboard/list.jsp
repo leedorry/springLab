@@ -157,7 +157,8 @@
 				$('#searchBtn').on(
 						"click",
 						function(event) {
-
+							//location.href =  self.location과 같은 역할
+							// window.load("")
 							self.location = "list"
 									+ '${pageMaker.makeQuery(1)}'
 									+ "&searchType="

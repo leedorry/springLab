@@ -68,7 +68,7 @@ public class BoardDAOTest {
 	//@Test
 	public void testListPage() throws Exception {
 
-		int page = 1;
+		int page = 2;
 
 		List<BoardVO> list = dao.listPage(page);
 
@@ -112,7 +112,7 @@ public class BoardDAOTest {
 		logger.info(uriComponents.toString());
 	}
 
-	//@Test
+	@Test
 	public void testDynamic1() throws Exception {
 
 		SearchCriteria cri = new SearchCriteria();
