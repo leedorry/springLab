@@ -58,6 +58,7 @@ small {
 					  
 					  var str ="";
 					  
+					  // data "
 					  if(checkImageType(data)){
 						  str ="<div><a href=displayFile?fileName="+getImageLink(data)+">"
 								  +"<img src='displayFile?fileName="+data+"'/>"

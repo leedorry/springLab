@@ -83,6 +83,7 @@ public class UploadController {
                 file.getOriginalFilename(), 
                 file.getBytes()), 
           HttpStatus.CREATED);
+    // "/2021/07/07/s_3343ssaafdda_dog.jpg", HttpStatus.CREATED
   }
   
   

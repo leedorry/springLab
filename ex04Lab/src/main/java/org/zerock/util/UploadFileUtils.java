@@ -35,20 +35,23 @@ public class UploadFileUtils {
     
     String savedName = uid.toString() +"_"+originalName;
     
-    String savedPath = calcPath(uploadPath);
+    String savedPath = calcPath(uploadPath);  // "\2021\07\07"
     
     File target = new File(uploadPath +savedPath,savedName);
+    // "c:\\zzz\\upload\2021\07\07", "3343ssaafdda_dog.jpg"
     
     FileCopyUtils.copy(fileData, target);
     
     String formatName = originalName.substring(originalName.lastIndexOf(".")+1);
-    
+    // "jpg"
     String uploadedFileName = null;
     
     if(MediaUtils.getMediaType(formatName) != null){
       uploadedFileName = makeThumbnail(uploadPath, savedPath, savedName);
+      // "/2021/07/07/s_3343ssaafdda_dog.jpg"
     }else{
       uploadedFileName = makeIcon(uploadPath, savedPath, savedName);
+      // "/2021/07/07/s_3343ssaafdda_dog.txt"
     }
     
     return uploadedFileName;
@@ -61,6 +64,7 @@ public class UploadFileUtils {
 
     String iconName = 
         uploadPath + path + File.separator+ fileName;
+    // "/2021/07/07/s_3343ssaafdda_dog.jpg"
     
     return iconName.substring(
         uploadPath.length()).replace(File.separatorChar, '/');
@@ -82,6 +86,7 @@ public class UploadFileUtils {
     
     String thumbnailName = 
         uploadPath + path + File.separator +"s_"+ fileName;
+    // "/2021/07/07/s_3343ssaafdda_dog.jpg"
     
     File newFile = new File(thumbnailName);
     String formatName = 
@@ -99,14 +104,17 @@ public class UploadFileUtils {
     Calendar cal = Calendar.getInstance();
     
     String yearPath = File.separator+cal.get(Calendar.YEAR);
+    // "\2021"
     
     String monthPath = yearPath + 
         File.separator + 
         new DecimalFormat("00").format(cal.get(Calendar.MONTH)+1);
-
+    // "\2021\07"
+    
     String datePath = monthPath + 
         File.separator + 
         new DecimalFormat("00").format(cal.get(Calendar.DATE));
+    // "\2021\07\07"
     
     makeDir(uploadPath, yearPath,monthPath,datePath);
     
@@ -123,8 +131,8 @@ public class UploadFileUtils {
     }
     
     for (String path : paths) {
-      
-      File dirPath = new File(uploadPath + path);
+      // path = "/2021/07/07"
+      File dirPath = new File(uploadPath + path);  // "c:\\zzz\\upload\2021/07/07"
       
       if(! dirPath.exists() ){
         dirPath.mkdir();
